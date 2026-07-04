@@ -2,11 +2,15 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    const res = await fetch("https://api.github.com/users/Ramkrishna45");
+    const headers: HeadersInit = process.env.GITHUB_TOKEN 
+      ? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` } 
+      : {};
+
+    const res = await fetch("https://api.github.com/users/Ramkrishna45", { headers });
     if (!res.ok) throw new Error("Failed to fetch Github data");
     const data = await res.json();
     
-    const reposRes = await fetch("https://api.github.com/users/Ramkrishna45/repos?sort=updated&per_page=6");
+    const reposRes = await fetch("https://api.github.com/users/Ramkrishna45/repos?sort=updated&per_page=6", { headers });
     const repos = await reposRes.ok ? await reposRes.json() : [];
 
     return NextResponse.json({
