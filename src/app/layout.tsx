@@ -1,18 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Space_Grotesk, Unbounded } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
-import { Navbar } from "@/components/navbar";
-import { GlobalTools } from "@/components/global-tools";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+import SiteFrame from "@/components/site-frame";
+import { Providers } from "@/components/providers";
+
+/* Body/base font — Space Grotesk, bound to --font-sans */
+const spaceGroteskSans = Space_Grotesk({
   subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+/* Heading font — Unbounded, bound to --font-display */
+const unbounded = Unbounded({
   subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -22,28 +26,27 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={[
+        spaceGroteskSans.variable,
+        unbounded.variable,
+        "font-sans",
+      ].join(" ")}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Navbar />
-          <GlobalTools />
-          <main className="flex-1 w-full flex flex-col pt-24 pb-12 items-center">
-            {children}
-          </main>
-        </ThemeProvider>
+      <head>
+        {/* The Spline runtime lazy-loads its wasm from unpkg; warm the connection early */}
+        <link rel="preconnect" href="https://unpkg.com" crossOrigin="anonymous" />
+      </head>
+      <body>
+        <Providers>
+          <SiteFrame>{children}</SiteFrame>
+        </Providers>
       </body>
     </html>
   );

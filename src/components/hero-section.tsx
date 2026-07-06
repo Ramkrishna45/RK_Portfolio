@@ -4,8 +4,6 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Download, Mail } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa6";
-import { Desktop3D } from "./desktop-3d";
-
 const titles = [
   "Software Engineer",
   "Full Stack Developer",
@@ -130,16 +128,10 @@ export function HeroSection() {
         </motion.div>
       </div>
 
-      {/* 3D Interactive Workspace */}
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
-        className="flex-1 w-full h-[500px] lg:h-[700px] mt-12 lg:mt-0 relative"
-      >
-        {/* Profile Image overlay or something? The prompt said: "Include a professional profile image with a subtle animated border." I will add it as a small floating element or somewhere in the about section. Let's add it near the intro for now. */}
-        <Desktop3D />
-      </motion.div>
+
+
+      {/* Empty right side to let the Spline keyboard shine */}
+      <div className="hidden lg:block flex-1 w-full h-[500px] lg:h-[700px]"></div>
     </section>
   );
 }
