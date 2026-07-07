@@ -81,8 +81,8 @@ const ContactForm = () => {
     setLoading(false);
   };
   return (
-    <form className="min-w-7xl mx-auto sm:mt-4" onSubmit={handleSubmit} aria-busy={loading}>
-      <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
+    <form className="w-full mx-auto sm:mt-4" onSubmit={handleSubmit} aria-busy={loading}>
+      <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 mb-4">
         <LabelInputContainer>
           <Label htmlFor="fullname">Full name</Label>
           <Input
@@ -94,7 +94,7 @@ const ContactForm = () => {
           />
           {errors.fullName && <p className="text-sm text-red-500">{errors.fullName}</p>}
         </LabelInputContainer>
-        <LabelInputContainer className="mb-4">
+        <LabelInputContainer>
           <Label htmlFor="email">Email Address</Label>
           <Input
             id="email"
