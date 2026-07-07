@@ -81,8 +81,8 @@ const ContactForm = () => {
     setLoading(false);
   };
   return (
-    <form className="w-full mx-auto sm:mt-4" onSubmit={handleSubmit} aria-busy={loading}>
-      <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 mb-4">
+    <form className="w-full mx-auto sm:mt-4 overflow-hidden" onSubmit={handleSubmit} aria-busy={loading}>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         <LabelInputContainer>
           <Label htmlFor="fullname">Full name</Label>
           <Input
@@ -106,7 +106,7 @@ const ContactForm = () => {
           {errors.email && <p className="text-sm text-red-500">{errors.email}</p>}
         </LabelInputContainer>
       </div>
-      <div className="grid w-full gap-1.5 mb-4">
+      <div className="flex flex-col w-full gap-1.5 mb-4">
         <Label htmlFor="content">Your Message</Label>
         <Textarea
           placeholder="Tell me about about your project,"
