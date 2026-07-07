@@ -109,14 +109,14 @@ const ContactForm = () => {
       <div className="flex flex-col w-full gap-1.5 mb-4">
         <Label htmlFor="content">Your Message</Label>
         <Textarea
-          placeholder="Tell me about about your project,"
+          placeholder="I'd love to hear the vision behind your project..."
           id="content"
           value={message}
           onChange={(e) => { setMessage(e.target.value); setErrors((p) => ({ ...p, message: undefined })); }}
         />
         {errors.message && <p className="text-sm text-red-500">{errors.message}</p>}
         <p className="text-sm text-muted-foreground">
-          I&apos;ll never share your data with anyone else. Pinky promise!
+          Your privacy is paramount. I keep your details strictly confidential, guaranteed!
         </p>
       </div>
       <Button
