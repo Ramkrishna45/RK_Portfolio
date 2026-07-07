@@ -2,13 +2,13 @@ import { useState, useEffect } from "react";
 import type { Socket } from "socket.io-client";
 
 export function useConnectionStatus(socket: Socket | null) {
-  const [status, setStatus] = useState<"connected" | "disconnected" | "reconnecting">("disconnected");
+  const [status, setStatus] = useState<"connected" | "disconnected" | "connecting">("disconnected");
   
   useEffect(() => {
     if (!socket) return;
     const onConnect = () => setStatus("connected");
     const onDisconnect = () => setStatus("disconnected");
-    const onConnectError = () => setStatus("reconnecting");
+    const onConnectError = () => setStatus("connecting");
     
     socket.on("connect", onConnect);
     socket.on("disconnect", onDisconnect);
