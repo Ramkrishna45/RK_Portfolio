@@ -5,6 +5,8 @@ import Header from "@/components/header/header";
 import Footer from "@/components/footer/footer";
 import AppOverlays from "@/components/app-overlays";
 
+import { CommandPalette } from "./command-palette";
+
 /**
  * Wraps the app shell. The `/components*` showcase routes are rendered
  * "bare" (no header / footer / decorative overlays) so the component
@@ -22,6 +24,7 @@ export default function SiteFrame({ children }: { children: React.ReactNode }) {
       {children}
       <Footer />
       <AppOverlays />
+      <CommandPalette />
     </>
   );
 }

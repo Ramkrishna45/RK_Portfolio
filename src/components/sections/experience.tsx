@@ -10,7 +10,7 @@ const ExperienceSection = () => {
   return (
     <SectionWrapper
       id="experience"
-      className="flex flex-col items-center justify-center w-full md:w-1/2 min-h-[120vh] py-20 z-10"
+      className="flex flex-col items-center justify-center w-full max-w-4xl mx-auto min-h-[120vh] py-20 z-10"
     >
       <div className="w-full max-w-4xl px-4 md:px-8 mx-auto">
         <SectionHeader
@@ -82,25 +82,6 @@ const ExperienceCard = ({
             ))}
           </ul>
 
-          <div className="flex flex-wrap gap-2">
-            {experience.skills.map((skillName) => {
-              const skill = SKILLS[skillName as SkillNames];
-              return (
-                <Badge
-                  key={skillName}
-                  variant="outline"
-                  className="gap-2 text-xs font-normal bg-secondary/30 hover:bg-secondary/50 transition-colors border-transparent"
-                >
-                  <img
-                    src={skill.icon}
-                    alt={skill.label}
-                    className="w-3.5 h-3.5 object-contain opacity-80"
-                  />
-                  {skill.label}
-                </Badge>
-              );
-            })}
-          </div>
         </CardContent>
       </Card>
     </motion.div>

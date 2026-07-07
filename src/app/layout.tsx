@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Unbounded } from "next/font/google";
+import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 
 import SiteFrame from "@/components/site-frame";
 import { Providers } from "@/components/providers";
 
-/* Body/base font — Space Grotesk, bound to --font-sans */
-const spaceGroteskSans = Space_Grotesk({
+/* Body/base font — Inter, bound to --font-sans */
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
 });
 
-/* Heading font — Unbounded, bound to --font-display */
-const unbounded = Unbounded({
+/* Heading font — Outfit, bound to --font-display */
+const outfit = Outfit({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
@@ -33,8 +33,8 @@ export default function RootLayout({
     <html
       lang="en"
       className={[
-        spaceGroteskSans.variable,
-        unbounded.variable,
+        inter.variable,
+        outfit.variable,
         "font-sans",
       ].join(" ")}
       suppressHydrationWarning

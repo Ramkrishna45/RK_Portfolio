@@ -30,7 +30,7 @@ type Circle = {
 
 export default function Particles({
   className = "",
-  quantity = 30,
+  quantity = 80,
   staticity = 50,
   ease = 50,
   refresh = false,
@@ -150,7 +150,7 @@ export default function Particles({
       context.current.translate(translateX, translateY);
       context.current.beginPath();
       context.current.arc(x, y, size, 0, 2 * Math.PI);
-      context.current.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+      context.current.fillStyle = `rgba(14, 165, 233, ${alpha})`;
       context.current.fill();
       context.current.setTransform(dpr, 0, 0, dpr, 0, 0);
 
@@ -249,6 +249,28 @@ export default function Particles({
         );
       }
     });
+
+    // Draw neural network connections
+    for (let i = 0; i < circles.current.length; i++) {
+      for (let j = i + 1; j < circles.current.length; j++) {
+        const dx = circles.current[i].x + circles.current[i].translateX - (circles.current[j].x + circles.current[j].translateX);
+        const dy = circles.current[i].y + circles.current[i].translateY - (circles.current[j].y + circles.current[j].translateY);
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        if (distance < 120) { // Connect nodes within 120px
+          if (context.current) {
+            context.current.beginPath();
+            context.current.moveTo(circles.current[i].x + circles.current[i].translateX, circles.current[i].y + circles.current[i].translateY);
+            context.current.lineTo(circles.current[j].x + circles.current[j].translateX, circles.current[j].y + circles.current[j].translateY);
+            const maxAlpha = Math.min(circles.current[i].alpha, circles.current[j].alpha);
+            const lineAlpha = maxAlpha * (1 - distance / 120);
+            context.current.strokeStyle = `rgba(14, 165, 233, ${lineAlpha * 0.7})`; 
+            context.current.lineWidth = 0.8;
+            context.current.stroke();
+          }
+        }
+      }
+    }
     rafId.current = window.requestAnimationFrame(animate);
   };
 

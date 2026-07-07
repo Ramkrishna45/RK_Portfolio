@@ -31,11 +31,12 @@ const config = {
     return this.site + "/assets/seo/og-image.png";
   },
   social: {
-    twitter: "https://x.com/",
-    linkedin: "https://www.linkedin.com/in/ramkrishna-tripathi-920405295",
+    leetcode: "https://leetcode.com/u/jarvis45/",
+    linkedin: "https://www.linkedin.com/in/ram-krishna-tripathi-987b26279/",
     instagram: "https://www.instagram.com/",
     facebook: "https://www.facebook.com/",
     github: "https://github.com/Ramkrishna45",
   },
+  resumeLink: "https://drive.google.com/file/d/1xdzsjXmSUDTtsnTQEIcGe1-rgdbwucDD/view?usp=drive_link",
 };
 export { config };

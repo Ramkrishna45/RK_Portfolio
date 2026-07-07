@@ -20,7 +20,7 @@ const SkillsSection = () => {
   return (
     <SectionWrapper
       id="skills"
-      className="flex w-full md:w-1/2 min-h-screen flex-col justify-center py-24"
+      className="flex w-full max-w-4xl mx-auto min-h-screen flex-col justify-center py-24"
     >
       <SectionHeader
         id="skills"

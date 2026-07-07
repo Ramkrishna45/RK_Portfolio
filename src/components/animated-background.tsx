@@ -134,8 +134,6 @@ const KeyboardScene = ({ maxDpr }: { maxDpr: number }) => {
     if (!splineApp || !splineContainer.current) return [];
     const kbd = splineApp.findObjectByName("keyboard");
     if (!kbd) return [];
-
-    // Initial state
     const heroState = getKeyboardState({ section: "hero", isMobile });
     gsap.set(kbd.scale, heroState.scale);
     gsap.set(kbd.position, heroState.position);
@@ -238,7 +236,10 @@ const KeyboardScene = ({ maxDpr }: { maxDpr: number }) => {
   const updateKeyboardTransform = async () => {
     if (!splineApp) return;
     const kbd = splineApp.findObjectByName("keyboard");
-    if (!kbd) return;
+    if (!kbd) {
+      setKeyboardRevealed(true);
+      return;
+    }
 
     kbd.visible = false;
     await sleep(400);
@@ -361,21 +362,19 @@ const KeyboardScene = ({ maxDpr }: { maxDpr: number }) => {
     let teardownKeyboard: gsap.core.Tween | undefined;
 
     const kbd = splineApp.findObjectByName("keyboard");
+    if (!kbd) return;
 
-    if (kbd) {
+    if (!rotateKeyboard) {
       rotateKeyboard = gsap.to(kbd.rotation, {
-        y: Math.PI * 2 + kbd.rotation.y,
+        y: "+=6.28319", // 2π radians
         duration: 10,
         repeat: -1,
-        yoyo: true,
-        yoyoEase: true,
-        ease: "back.inOut",
-        delay: 2.5,
-        paused: true, // Start paused
+        ease: "linear",
       });
+    }
 
-      teardownKeyboard = gsap.fromTo(
-        kbd.rotation,
+    if (!teardownKeyboard) {
+      teardownKeyboard = gsap.fromTo(kbd.rotation,
         { y: 0, x: -Math.PI, z: 0 },
         {
           y: -Math.PI / 2,
@@ -488,7 +487,7 @@ const KeyboardScene = ({ maxDpr }: { maxDpr: number }) => {
           setSplineApp(app);
           bypassLoading();
         }}
-        scene="/assets/skills-keyboard.spline"
+        scene="https://prod.spline.design/TJ-inkdM01Li8BZr/scene.splinecode"
       />
     </Suspense>
   );

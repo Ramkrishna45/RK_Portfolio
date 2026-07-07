@@ -11,11 +11,12 @@ import {
 import { usePreloader } from "../preloader";
 import { BlurIn, BoxReveal } from "../reveal-animations";
 import ScrollDownIcon from "../scroll-down-icon";
-import { SiGithub, SiX } from "react-icons/si";
+import { SiGithub, SiLeetcode } from "react-icons/si";
 import { FaLinkedin } from "react-icons/fa";
 import { config } from "@/data/config";
 
 import SectionWrapper from "../ui/section-wrapper";
+import { TextRotator } from "../ui/text-rotator";
 
 const HeroSection = () => {
   const { isLoading } = usePreloader();
@@ -27,7 +28,7 @@ const HeroSection = () => {
           className={cn(
             "h-[calc(100dvh-3rem)] md:h-[calc(100dvh-4rem)] z-[2]",
             "col-span-1",
-            "flex flex-col justify-start md:justify-center items-center md:items-start",
+            "flex flex-col justify-start md:justify-center items-start",
             "pt-28 sm:pb-16 md:p-20 lg:p-24 xl:p-28"
           )}
         >
@@ -71,21 +72,29 @@ const HeroSection = () => {
                 </BlurIn>
                 {/* <div className="md:block hidden bg-gradient-to-r from-zinc-300/0 via-zinc-300/50 to-zinc-300/0 w-screen h-px animate-fade-right animate-glow" /> */}
                 <BlurIn delay={1.2}>
-                  <p
+                  <div
                     className={cn(
-                      "md:self-start md:mt-4 font-medium text-md text-slate-500 dark:text-zinc-400",
-                      "cursor-default sm:text-xl md:text-xl whitespace-nowrap bg-clip-text "
+                      "flex items-center md:self-start md:mt-4 font-medium text-md text-slate-500 dark:text-brand",
+                      "cursor-default sm:text-xl md:text-xl whitespace-nowrap bg-clip-text"
                     )}
                   >
-                    A Full Stack Web Developer
-                  </p>
+                    A <TextRotator 
+                        className="inline-flex min-w-[280px] ml-2 text-primary dark:text-primary font-semibold"
+                        titles={[
+                          "Software Engineer",
+                          "Full Stack Developer",
+                          "Backend Developer",
+                          "AI Engineer",
+                          "Machine Learning Enthusiast",
+                          "Systems Programmer"
+                        ]} 
+                      />
+                  </div>
                 </BlurIn>
               </div>
               <div className="mt-8 flex flex-col gap-3 w-fit">
                 <Link
-                  href={
-                    "https://drive.google.com/file/d/1MTSsUA8V7Po2AsNXT8kZ5sLOpzC8l7qm/view?usp=sharing"
-                  }
+                  href={config.resumeLink}
                   target="_blank"
                   className="flex-1"
                 >
@@ -114,11 +123,11 @@ const HeroSection = () => {
                   </Tooltip>
                   <div className="flex items-center h-full gap-2">
                     <Link
-                      href={config.social.twitter}
+                      href={config.social.leetcode}
                       target="_blank"
                     >
                       <Button variant={"outline"}>
-                        <SiX size={24} />
+                        <SiLeetcode size={24} />
                       </Button>
                     </Link>
                     <Link

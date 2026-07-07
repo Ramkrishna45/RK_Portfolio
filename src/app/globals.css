@@ -50,50 +50,51 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 220 20% 98%;
+    --foreground: 222 47% 11%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 222 47% 11%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222 47% 11%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 199 89% 48%; /* Vibrant Cyan/Teal */
     --primary-foreground: 210 40% 98%;
     --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary-foreground: 222 47% 11%;
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
     --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent-foreground: 222 47% 11%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222 84% 5%;
+    --ring: 199 89% 48%;
     --radius: 0.5rem;
-    --brand: #171717;
+    --brand: #0ea5e9;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
+    /* Deep Aurora Palette */
+    --background: 224 45% 6%;  /* Deep Midnight Blue #080C16 */
     --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
+    --card: 224 40% 9%;       /* Slightly lighter blue #0E1424 */
     --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
+    --popover: 224 40% 9%;
     --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
+    --primary: 199 89% 48%;    /* Vibrant Cyan #0EA5E9 */
     --primary-foreground: 222 47% 11%;
-    --secondary: 217.2 32.6% 17.5%;
+    --secondary: 224 35% 15%;  /* Subdued Blue #18233C */
     --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
+    --muted: 224 35% 15%;
     --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
+    --accent: 224 35% 15%;
     --accent-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212 27% 84%;
-    --brand: #f5f5f5;
+    --border: 224 35% 15%;
+    --input: 224 35% 15%;
+    --ring: 199 89% 48%;
+    --brand: #0ea5e9;
   }
 
   * {
@@ -108,6 +109,10 @@
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
     scroll-behavior: smooth;
+    /* SaaS Dotted Grid Background Overlay */
+    background-image: radial-gradient(hsl(var(--foreground)/0.07) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-attachment: fixed;
   }
 
   h1, h2, h3, h4, h5, h6 {
