@@ -1,5 +1,4 @@
 import { Link } from "@/types";
-
 const links: Link[] = [
   {
     title: 'Home',

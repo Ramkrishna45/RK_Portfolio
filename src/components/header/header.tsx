@@ -12,6 +12,7 @@ import { Button } from "../ui/button";
 import { config } from "@/data/config";
 
 import { GitHubStarsButton } from "../ui/shadcn-io/github-stars-button";
+import OnlineUsers from "../realtime/online-users";
 
 interface HeaderProps {
   loader?: boolean;
