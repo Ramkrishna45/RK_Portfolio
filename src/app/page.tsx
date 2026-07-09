@@ -10,6 +10,8 @@ import ProjectsSection from "@/components/sections/projects";
 import ContactSection from "@/components/sections/contact";
 import HeroSection from "@/components/sections/hero";
 
+import { LeetCodeSection } from "@/components/sections/leetcode";
+
 function MainPage() {
   return (
     <SmoothScroll>
@@ -19,6 +21,7 @@ function MainPage() {
         <SkillsSection />
         <ExperienceSection />
         <ProjectsSection />
+        <LeetCodeSection />
         <ContactSection />
       </main>
     </SmoothScroll>

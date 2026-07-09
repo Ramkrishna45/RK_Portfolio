@@ -29,6 +29,9 @@ export async function GET() {
               submissions
             }
           }
+          userCalendar(year: 2026) {
+            submissionCalendar
+          }
         }
       }
     `;
@@ -63,7 +66,8 @@ export async function GET() {
       easySolved,
       mediumSolved,
       hardSolved,
-      rating: 1750 // Hardcoded from resume as LeetCode rating requires a different complex query
+      rating: 1750, // Hardcoded from resume as LeetCode rating requires a different complex query
+      submissionCalendar: matchedUser.userCalendar.submissionCalendar
     });
   } catch (error) {
     return NextResponse.json({ 
@@ -75,7 +79,8 @@ export async function GET() {
         easySolved: 150,
         mediumSolved: 250,
         hardSolved: 100,
-        rating: 1750
+        rating: 1750,
+        submissionCalendar: "{}"
       }
     }, { status: 500 });
   }
